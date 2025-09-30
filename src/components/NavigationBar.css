@@ -1,0 +1,35 @@
+.navigation-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  border-top: 1px solid #e5e7eb;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  z-index: 1000;
+}
+
+.nav-item {
+  text-decoration: none;
+  color: #6b7280;
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+
+.nav-item.active {
+  color: #111827;
+  background: #f3f4f6;
+}
+
+.nav-label {
+  font-size: 14px;
+}
+
+@media (max-width: 480px) {
+  .nav-label { font-size: 12px; }
+}
+
+
