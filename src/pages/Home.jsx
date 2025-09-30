@@ -22,6 +22,11 @@ const Home = () => {
         <button className="bell" title="Notifications">🔔</button>
       </header>
 
+      <div className="search">
+        <input placeholder="Search people, vendors, updates" />
+        <button className="primary">Search</button>
+      </div>
+
       <section className="stats">
         <div className="stat"><div className="num">156</div><div className="label">Connections</div></div>
         <div className="stat"><div className="num">23</div><div className="label">Posts</div></div>
@@ -36,6 +41,38 @@ const Home = () => {
             <div className="qc-cta" style={{ color: c.color }}>{c.cta} →</div>
           </a>
         ))}
+      </section>
+
+      <section className="preview">
+        <div className="panel">
+          <div className="panel-head">
+            <div className="ph-title">Recent chats</div>
+            <a href="/chat" className="link">View all →</a>
+          </div>
+          <div className="items">
+            {[{n:'Designer',t:'2m',m:'Shared a mockup'},{n:'Manager',t:'1h',m:'Standup at 10'},{n:'Tech Mart',t:'1d',m:'Order shipped'}].map((c,i)=>(
+              <div key={i} className="row">
+                <div className="avatar">{c.n.slice(0,1)}</div>
+                <div className="meta">
+                  <div className="line"><span className="bold">{c.n}</span><span className="muted">{c.t}</span></div>
+                  <div className="muted">{c.m}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="panel">
+          <div className="panel-head">
+            <div className="ph-title">Suggestions</div>
+            <a href="/profile" className="link">Manage →</a>
+          </div>
+          <div className="chips">
+            {['Design','Developers','Retail','Local','Events','Offers'].map(t=>(
+              <button key={t} className="chip">#{t}</button>
+            ))}
+          </div>
+        </div>
       </section>
 
       <section className="updates">
