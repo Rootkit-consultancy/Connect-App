@@ -6,8 +6,8 @@ import NavigationBar from './components/NavigationBar'
 import Login from './pages/Login'
 import Onboarding from './pages/Onboarding'
 import Chat from './pages/Chat'
-import Share from './pages/Share'
 import Profile from './pages/Profile'
+import Home from './pages/Home'
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(() => !!localStorage.getItem('connect_profile'))
@@ -30,14 +30,11 @@ function App() {
       <div className="app">
         <div className="app-content">
           <Routes>
-            <Route path="/" element={isAuthenticated ? <Navigate to="/share" replace /> : <Onboarding onComplete={(u)=>{ setUser(u); setIsAuthenticated(true) }} />} />
+            <Route path="/" element={isAuthenticated ? <Navigate to="/home" replace /> : <Onboarding onComplete={(u)=>{ setUser(u); setIsAuthenticated(true) }} />} />
+            <Route path="/home" element={isAuthenticated ? <Home /> : <Navigate to="/" replace />} />
             <Route
               path="/chat"
               element={isAuthenticated ? <Chat user={user} /> : <Navigate to="/" replace />}
-            />
-            <Route
-              path="/share"
-              element={isAuthenticated ? <Share user={user} /> : <Navigate to="/" replace />}
             />
             <Route
               path="/profile"

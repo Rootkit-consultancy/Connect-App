@@ -4,9 +4,8 @@ import './NavigationBar.css'
 const NavigationBar = () => {
   const location = useLocation()
   const items = [
-    { to: '/share', label: 'Home' },
+    { to: '/home', label: 'Home' },
     { to: '/chat', label: 'Chat' },
-    { to: '/share', label: 'Share' },
     { to: '/profile', label: 'Profile' },
   ]
 
