@@ -1,6 +1,4 @@
 import { useMemo, useRef, useState } from 'react'
-import { auth, db, RecaptchaVerifier, signInWithPhoneNumber } from '../lib/firebase'
-import { doc, setDoc } from 'firebase/firestore'
 import './Onboarding.css'
 
 const OCCUPATIONS = [
@@ -38,28 +36,16 @@ const PhoneStep = ({ onVerified }) => {
   const [otp, setOtp] = useState('')
   const verifierRef = useRef(null)
 
-  const demoMode = useMemo(() => !auth, [])
+  const demoMode = useMemo(() => true, [])
 
   const sendOtp = async () => {
-    if (demoMode) {
-      setOtpSent(true)
-      return
-    }
-    if (!verifierRef.current) {
-      verifierRef.current = new RecaptchaVerifier(auth, 'recaptcha-container', { size: 'invisible' })
-    }
-    const confirmation = await signInWithPhoneNumber(auth, phone, verifierRef.current)
-    window.__confirmation = confirmation
+    // Demo-only flow: instantly mark OTP as sent
     setOtpSent(true)
   }
 
   const verify = async () => {
-    if (demoMode) {
-      if (otp === '123456') onVerified({ uid: `demo_${phone}`, phone })
-      return
-    }
-    const result = await window.__confirmation.confirm(otp)
-    onVerified({ uid: result.user.uid, phone })
+    // Demo OTP check
+    if (otp === '123456') onVerified({ uid: `demo_${phone}`, phone })
   }
 
   return (
@@ -134,11 +120,6 @@ const Onboarding = ({ onComplete }) => {
 
   const handleFinish = async () => {
     const final = { ...profile, createdAt: Date.now() }
-    try {
-      if (db && final.uid) {
-        await setDoc(doc(db, 'users', final.uid), final, { merge: true })
-      }
-    } catch {}
     localStorage.setItem('connect_profile', JSON.stringify(final))
     onComplete(final)
   }
