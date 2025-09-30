@@ -9,6 +9,7 @@
   justify-content: space-around;
   padding: 10px 0;
   z-index: 1000;
+  box-shadow: 0 -6px 24px rgba(29, 78, 216, 0.08);
 }
 
 .nav-item {
@@ -20,8 +21,8 @@
 }
 
 .nav-item.active {
-  color: #111827;
-  background: #f3f4f6;
+  color: #1d4ed8;
+  background: #e0e7ff;
 }
 
 .nav-label {

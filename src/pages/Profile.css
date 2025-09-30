@@ -1,0 +1,13 @@
+.prof { padding:16px; padding-bottom:96px; max-width:960px; margin:0 auto; }
+.prof-head { display:flex; align-items:center; gap:12px; margin-bottom:16px; }
+.avatar.lg { width:56px; height:56px; border-radius:50%; background:#2563eb; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:20px; box-shadow:0 8px 24px rgba(37,99,235,.25); }
+.name { font-size:18px; font-weight:800; color:#111827; }
+.muted { color:#6b7280; font-size:12px; }
+.cards { display:grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap:12px; }
+.card { background:linear-gradient(180deg,#ffffff,#f5f9ff); border:1px solid #bfdbfe; border-radius:14px; padding:14px; box-shadow:0 8px 24px rgba(29,78,216,.08); }
+.label { color:#1e3a8a; font-weight:700; font-size:12px; margin-bottom:6px; }
+.value { color:#111827; font-weight:700; }
+.actions { display:flex; gap:10px; margin-top:16px; }
+.btn { border:none; background:#2563eb; color:#fff; padding:10px 14px; border-radius:10px; font-weight:800; }
+.btn.outline { background:#e0e7ff; color:#1d4ed8; }
+
